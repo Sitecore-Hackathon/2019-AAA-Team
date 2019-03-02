@@ -4,8 +4,10 @@ using Sitecore.Commerce.EntityViews;
 using Sitecore.Commerce.Plugin.Shops;
 using Sitecore.Framework.Pipelines;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hackathon.AAATeam.Feature.Navigation.Models;
 
 namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
 {
@@ -28,7 +30,7 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
                 ViewName = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb
             });
 
-            Shop shop = context.CommerceContext.GetObjects<Shop>()
+            var shop = context.CommerceContext.GetObjects<Shop>()
                 .FirstOrDefault(s => s.Name.Equals(context.CommerceContext.CurrentShopName(), StringComparison.OrdinalIgnoreCase))
                 ?? context.CommerceContext.GetEntities<Shop>()
                 .FirstOrDefault(s => s.Name.Equals(context.CommerceContext.CurrentShopName(), StringComparison.OrdinalIgnoreCase));
@@ -186,6 +188,8 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
                 }
             });
             entityView.ChildViews.Add(level3);
+
+            var list = new List<BreadcrumbModel>();
 
             return Task.FromResult(entityView);
         }

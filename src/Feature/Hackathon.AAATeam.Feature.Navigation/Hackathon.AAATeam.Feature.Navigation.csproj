@@ -40,7 +40,12 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Models\" />
     <Folder Include="Pipelines\Arguments\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\..\..\packages\sitecore.kernel.noreferences\9.0.180604\lib\NET462\Sitecore.Kernel.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

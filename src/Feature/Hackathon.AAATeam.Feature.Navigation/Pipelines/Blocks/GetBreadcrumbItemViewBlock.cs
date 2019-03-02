@@ -9,11 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hackathon.AAATeam.Feature.Navigation.Models;
 
 namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
 {
     [PipelineDisplayName("AAATeam.Navigation.block.GetBreadcrumbItemView")]
-    public class GetBreadcrumbItemViewBlock : PipelineBlock<string, EntityView, CommercePipelineExecutionContext>
+    public class GetBreadcrumbItemViewBlock : PipelineBlock<string, BreadcrumbModel, CommercePipelineExecutionContext>
     {
         private readonly IFindEntityPipeline _findEntityPipeline;
         private readonly IFindEntitiesInListPipeline _findEntitiesInListPipeline;
@@ -24,12 +25,23 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
             _findEntitiesInListPipeline = findEntitiesInListPipeline;
         }
 
-        public override Task<EntityView> Run(string arg, CommercePipelineExecutionContext context)
+        public override async Task<BreadcrumbModel> Run(string arg, CommercePipelineExecutionContext context)
         {
-            //TODO: apply correct model for GetChildren(CatalogItemBase item, CommercePipelineExecutionContext context)
-            EntityView entityView = null;
+            var result  = new BreadcrumbModel();
 
-            return Task.FromResult(entityView);
+            var currentItem = await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), arg, false), context).ConfigureAwait(false) as CatalogItemBase;
+            var childList = new List<CatalogItemBase>();
+
+            if (currentItem != null)
+            {
+                var children = await GetChildren(currentItem, context).ConfigureAwait(false);
+                childList.AddRange(children);
+            }
+
+
+            
+
+            return result;
         }
 
         private async Task<List<CatalogItemBase>> GetChildren(CatalogItemBase item, CommercePipelineExecutionContext context)
