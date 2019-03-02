@@ -22,7 +22,7 @@
                 configure =>
                     {
                         configure.Add<GetBreadcrumbViewBlock>();
-                        configure.Add<IFormatEntityViewPipeline>();
+                        //configure.Add<IFormatEntityViewPipeline>();
                     })
 
                .ConfigurePipeline<IConfigureServiceApiPipeline>(configure => configure.Add<ConfigureServiceApiBlock>()));

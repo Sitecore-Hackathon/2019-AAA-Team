@@ -4,8 +4,6 @@ using Sitecore.Commerce.EntityViews;
 using Sitecore.Commerce.Plugin.Shops;
 using Sitecore.Framework.Pipelines;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,14 +14,16 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
     {
         public override Task<EntityView> Run(string arg, CommercePipelineExecutionContext context)
         {
-            EntityView entityView = new EntityView();
-            entityView.EntityId = string.Empty;
-            entityView.Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb;
-            entityView.Action = string.Empty;
-            entityView.ItemId = string.Empty;
-            entityView.UiHint = "List";
+            var entityView = new EntityView
+            {
+                EntityId = string.Empty,
+                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
+                Action = string.Empty,
+                ItemId = string.Empty,
+                UiHint = "List"
+            };
 
-            context.CommerceContext.AddObject(new EntityViewArgument()
+            context.CommerceContext.AddObject(new EntityViewArgument
             {
                 ViewName = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb
             });
@@ -32,47 +32,161 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
                 .FirstOrDefault(s => s.Name.Equals(context.CommerceContext.CurrentShopName(), StringComparison.OrdinalIgnoreCase))
                 ?? context.CommerceContext.GetEntities<Shop>()
                 .FirstOrDefault(s => s.Name.Equals(context.CommerceContext.CurrentShopName(), StringComparison.OrdinalIgnoreCase));
-            List<string> stringList;
 
-            if (shop == null || !shop.Languages.Any())
+            var level1 = new EntityView
             {
-                stringList = new List<string>
-                {
-                    context.CommerceContext.GetPolicy<GlobalEnvironmentPolicy>().DefaultLocale
-                };
-            }
-            else
-            {
-                stringList = shop.Languages;
-            }
+                EntityId = string.Empty,
+                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
+                Action = string.Empty,
+                ItemId = string.Empty,
+                UiHint = "List"
+            };
 
-            stringList.ForEach(language =>
+            var viewPropertyArray = new[]
             {
-                EntityView entityView2 = new EntityView()
-                {
-                    EntityId = string.Empty,
-                    ItemId = language,
-                    Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().Summary
-                };
-                CultureInfo cultureInfo = new CultureInfo(language);
-                List<ViewProperty> properties1 = entityView2.Properties;
-                properties1.Add(new ViewProperty()
+                new ViewProperty
                 {
                     Name = "Name",
-                    RawValue = cultureInfo.Name,
+                    RawValue = "Entity-Catalog-Habitat_Master",
                     IsReadOnly = true,
-                    IsHidden = false
-                });
-                List<ViewProperty> properties2 = entityView2.Properties;
-                properties2.Add(new ViewProperty()
+                    UiType = "EntityLink"
+                },
+                new ViewProperty
                 {
                     Name = "DisplayName",
-                    RawValue = cultureInfo.DisplayName + ": " + cultureInfo.NativeName,
+                    RawValue = "Habitat_Master",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "IsActive",
+                    RawValue =true,
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Icon",
+                    RawValue = "child.img",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Href",
+                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Id",
+                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
+                    IsReadOnly = true
+                }
+            };
+            level1.Properties.AddRange(viewPropertyArray);
+            entityView.ChildViews.Add(level1);
+
+            var level2 = new EntityView
+            {
+                EntityId = string.Empty,
+                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
+                Action = string.Empty,
+                ItemId = string.Empty,
+                UiHint = "List"
+            };
+
+            level1.Properties.AddRange(new[]
+            {
+                new ViewProperty
+                {
+                    Name = "Name",
+                    RawValue = "Entity-Catalog-Habitat_Master",
                     IsReadOnly = true,
-                    IsHidden = false
-                });
-                entityView.ChildViews.Add(entityView2);
+                    UiType = "EntityLink"
+                },
+                new ViewProperty
+                {
+                    Name = "DisplayName",
+                    RawValue = "Habitat_Master",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "IsActive",
+                    RawValue =true,
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Icon",
+                    RawValue = "child.img",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Href",
+                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Id",
+                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
+                    IsReadOnly = true
+                }
             });
+            entityView.ChildViews.Add(level2);
+
+            var level3 = new EntityView
+            {
+                EntityId = string.Empty,
+                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
+                Action = string.Empty,
+                ItemId = string.Empty,
+                UiHint = "List"
+            };
+
+            level1.Properties.AddRange(new[]
+            {
+                new ViewProperty
+                {
+                    Name = "Name",
+                    RawValue = "Entity-Catalog-Habitat_Master",
+                    IsReadOnly = true,
+                    UiType = "EntityLink"
+                },
+                new ViewProperty
+                {
+                    Name = "DisplayName",
+                    RawValue = "Habitat_Master",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "IsActive",
+                    RawValue =true,
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Icon",
+                    RawValue = "child.img",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Href",
+                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
+                    IsReadOnly = true
+                },
+                new ViewProperty
+                {
+                    Name = "Id",
+                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
+                    IsReadOnly = true
+                }
+            });
+            entityView.ChildViews.Add(level3);
+
             return Task.FromResult(entityView);
         }
     }

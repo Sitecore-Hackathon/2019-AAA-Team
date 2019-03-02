@@ -12,6 +12,32 @@
         }
 
         [HttpGet]
+        [Route("api/GetBreadcrumb()")]
+        [Microsoft.AspNetCore.OData.EnableQuery]
+        public async Task<IActionResult> GetBreadcrumb()
+        {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+
+            var process = Command<BizFxBreadcrumbCommand>()?.Process(string.Empty, CurrentContext);
+
+            if (process == null)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+
+            var result = await process;
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return new ObjectResult(result);
+        }
+
+        [HttpGet]
         [Route("api/GetBreadcrumbByItemId(itemId={itemId})")]
         [Microsoft.AspNetCore.OData.EnableQuery]
         public async Task<IActionResult> GetBreadcrumbByItemId(string itemId)
