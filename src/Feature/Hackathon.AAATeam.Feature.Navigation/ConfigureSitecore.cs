@@ -6,6 +6,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Sitecore.Commerce.Core;
     using Sitecore.Commerce.EntityViews;
+    using Sitecore.Commerce.Plugin.Catalog;
     using Sitecore.Framework.Configuration;
     using Sitecore.Framework.Pipelines.Definitions.Extensions;
 
@@ -24,8 +25,22 @@
                         configure.Add<GetBreadcrumbViewBlock>();
                         //configure.Add<IFormatEntityViewPipeline>();
                     })
-
-               .ConfigurePipeline<IConfigureServiceApiPipeline>(configure => configure.Add<ConfigureServiceApiBlock>()));
+            .ConfigurePipeline<ICreateRelationshipPipeline>(
+                configure =>
+                {
+                    configure.Add<UpdateCatalogCustomHierarchyBlock>().Before<UpdateCatalogHierarchyBlock>();
+                })
+            .ConfigurePipeline<IDeleteRelationshipPipeline>(
+                configure =>
+                {
+                    configure.Add<UpdateCatalogCustomHierarchyBlock>().Before<UpdateCatalogHierarchyBlock>();
+                })
+            .ConfigurePipeline<IConfigureServiceApiPipeline>(
+                configure =>
+                {
+                    configure.Add<ConfigureServiceApiBlock>();
+                })
+             );
 
             services.RegisterAllCommands(assembly);
         }

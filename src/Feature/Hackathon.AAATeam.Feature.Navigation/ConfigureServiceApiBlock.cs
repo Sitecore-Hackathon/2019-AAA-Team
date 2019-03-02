@@ -9,7 +9,7 @@
     using Sitecore.Framework.Conditions;
     using Sitecore.Framework.Pipelines;
 
-    [PipelineDisplayName("SamplePluginConfigureServiceApiBlock")]
+    [PipelineDisplayName("AAATeamPluginConfigureServiceApiBlock")]
     public class ConfigureServiceApiBlock : PipelineBlock<ODataConventionModelBuilder, ODataConventionModelBuilder, CommercePipelineExecutionContext>
     {
         public override Task<ODataConventionModelBuilder> Run(ODataConventionModelBuilder modelBuilder, CommercePipelineExecutionContext context)
