@@ -318,3 +318,10 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
+
+src/Project/Sitecore.Commerce.Engine/wwwroot/data
+
+src/Project/Sitecore.Commerce.Engine/wwwroot/bootstrap
+
+src/Project/Sitecore.Commerce.Engine/wwwroot/config*
+
