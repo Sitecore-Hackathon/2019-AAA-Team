@@ -113,6 +113,10 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
   loadSubItems(event, itemId): void {
     var currentIndex = this.breadCrumbs.findIndex(item => item.id == itemId.id);
 
+    this.breadCrumbs.forEach(element => {
+      element.active = false ;
+    });
+
     if(!itemId.children) {
       new Promise ((resolve, reject) => {
         const url = 'api/GetChildrenByItemId';//this.apiUrl;
@@ -168,6 +172,7 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
           }
         );
       });
+
       this.breadCrumbs[currentIndex].active = !this.breadCrumbs[currentIndex].active;
 
     } else {
