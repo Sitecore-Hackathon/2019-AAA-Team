@@ -1,11 +1,7 @@
 ﻿using Hackathon.AAATeam.Feature.Navigation.Entities;
-using Hackathon.AAATeam.Feature.Navigation.Policies;
 using Sitecore.Commerce.Core;
-using Sitecore.Commerce.EntityViews;
 using Sitecore.Commerce.Plugin.Catalog;
-using Sitecore.Commerce.Plugin.Shops;
 using Sitecore.Framework.Pipelines;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,32 +10,53 @@ using Hackathon.AAATeam.Feature.Navigation.Models;
 namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
 {
     [PipelineDisplayName("AAATeam.Navigation.block.GetBreadcrumbItemView")]
-    public class GetBreadcrumbItemViewBlock : PipelineBlock<string, BreadcrumbModel, CommercePipelineExecutionContext>
+    public class GetBreadcrumbItemViewBlock : PipelineBlock<string, List<BreadcrumbModel>, CommercePipelineExecutionContext>
     {
         private readonly IFindEntityPipeline _findEntityPipeline;
         private readonly IFindEntitiesInListPipeline _findEntitiesInListPipeline;
+        private readonly IFindEntityVersionsPipeline _findEntityVersionsPipeline;
 
-        public GetBreadcrumbItemViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntitiesInListPipeline findEntitiesInListPipeline)
+        public GetBreadcrumbItemViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntitiesInListPipeline findEntitiesInListPipeline, IFindEntityVersionsPipeline findEntityVersionsPipeline)
         {
             _findEntityPipeline = findEntityPipeline;
             _findEntitiesInListPipeline = findEntitiesInListPipeline;
+            _findEntityVersionsPipeline = findEntityVersionsPipeline;
         }
 
-        public override async Task<BreadcrumbModel> Run(string arg, CommercePipelineExecutionContext context)
+        public override async Task<List<BreadcrumbModel>> Run(string arg, CommercePipelineExecutionContext context)
         {
-            var result  = new BreadcrumbModel();
+            var result = new List<BreadcrumbModel>();
 
-            var currentItem = await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), arg, false), context).ConfigureAwait(false) as CatalogItemBase;
-            var childList = new List<CatalogItemBase>();
-
-            if (currentItem != null)
+            if (string.IsNullOrWhiteSpace(arg))
             {
-                var children = await GetChildren(currentItem, context).ConfigureAwait(false);
-                childList.AddRange(children);
+                return result;
             }
 
+            var currentItem =
+                await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), arg, false), context)
+                    .ConfigureAwait(false) as CatalogItemBase;
 
-            
+            if (currentItem == null)
+            {
+                return result;
+            }
+
+            var children = await GetChildren(currentItem, context).ConfigureAwait(false);
+
+            foreach (var itm in children)
+            {
+                var version = 1;
+                var commerceEntities =
+                    await _findEntityVersionsPipeline.Run(new FindEntityArgument(itm.GetType(), itm.Id, false),
+                        context);
+                if (commerceEntities != null)
+                {
+                    var itemVersion = commerceEntities.LastOrDefault();
+                    version = itemVersion?.Version ?? 1;
+                }
+
+                result.Add(itm.ToBreadcrumbModel(version));
+            }
 
             return result;
         }
