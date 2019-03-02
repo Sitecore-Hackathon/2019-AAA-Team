@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Hackathon.AAATeam.Feature.Navigation.Models;
     using Microsoft.AspNetCore.Mvc;
     using Sitecore.Commerce.Core;
 
@@ -39,7 +40,7 @@
                 return NotFound();
             }
 
-            return new ObjectResult(result);
+            return new ObjectResult(new BreadcrumItemsModel(result));
         }
 
         [HttpGet]
@@ -70,7 +71,7 @@
                 return NotFound();
             }
 
-            return new ObjectResult(result);
+            return new ObjectResult(new BreadcrumItemsModel(result));
         }
     }
 }

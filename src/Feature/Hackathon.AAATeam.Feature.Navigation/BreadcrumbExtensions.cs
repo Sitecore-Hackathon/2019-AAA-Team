@@ -3,7 +3,7 @@ using Sitecore.Commerce.Plugin.Catalog;
 
 namespace Hackathon.AAATeam.Feature.Navigation
 {
-    public static class Extensions
+    public static class BreadcrumbExtensions
     {
         public const string CatalogIconPath = "";
         public const string CategoryIconPath = "";
@@ -16,7 +16,7 @@ namespace Hackathon.AAATeam.Feature.Navigation
                 DisplayMode = item.DisplayName,
                 Name = item.Name,
                 IsActive = true,
-                Href = $"{version}/{item.Name}"
+                Href = $"/entityView/Master/{version}/{item.Name}"
             };
 
             if (item is Category)

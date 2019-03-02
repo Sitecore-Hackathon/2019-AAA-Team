@@ -1,12 +1,12 @@
 ﻿namespace Hackathon.AAATeam.Feature.Navigation
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Hackathon.AAATeam.Feature.Navigation.Models;
     using Hackathon.AAATeam.Feature.Navigation.Pipelines;
     using Sitecore.Commerce.Core;
     using Sitecore.Commerce.Core.Commands;
-    using Sitecore.Commerce.EntityViews;
 
     public class BizFxBreadcrumbItemCommand : CommerceCommand
     {
@@ -18,9 +18,9 @@
             _pipeline = pipeline;
         }
 
-        public virtual async Task<BreadcrumbModel> Process(string id, CommerceContext commerceContext)
+        public virtual async Task<List<BreadcrumbModel>> Process(string id, CommerceContext commerceContext)
         {
-            BreadcrumbModel entityView;
+            List<BreadcrumbModel> entityView;
 
             using (CommandActivity.Start(commerceContext, this))
             {
