@@ -16,9 +16,6 @@
         {
             Condition.Requires(modelBuilder).IsNotNull($"{this.Name}: The argument cannot be null.");
 
-            var getBreadcrumb = modelBuilder.Function("GetBreadcrumb");
-            getBreadcrumb.Returns<EntityView>();
-
             var getBreadcrumbByItemId = modelBuilder.Function("GetBreadcrumbByItemId");
             getBreadcrumbByItemId.Parameter<string>("itemId");
             getBreadcrumbByItemId.Returns<EntityView>();
