@@ -23,8 +23,12 @@
                 configure =>
                     {
                         configure.Add<GetBreadcrumbViewBlock>();
-                        //configure.Add<IFormatEntityViewPipeline>();
                     })
+            .AddPipeline<IBizFxBreadcrumbItemPipeline, BizFxBreadcrumbItemPipeline>(
+                configure =>
+                {
+                    configure.Add<GetBreadcrumbItemViewBlock>();
+                })
             .ConfigurePipeline<ICreateRelationshipPipeline>(
                 configure =>
                 {

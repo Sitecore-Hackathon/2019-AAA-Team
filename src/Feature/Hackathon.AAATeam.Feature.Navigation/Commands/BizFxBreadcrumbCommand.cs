@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Hackathon.AAATeam.Feature.Navigation.Models;
     using Hackathon.AAATeam.Feature.Navigation.Pipelines;
     using Sitecore.Commerce.Core;
     using Sitecore.Commerce.Core.Commands;
@@ -17,9 +18,9 @@
             _pipeline = pipeline;
         }
 
-        public virtual async Task<EntityView> Process(string id, CommerceContext commerceContext)
+        public virtual async Task<BreadcrumbModel> Process(string id, CommerceContext commerceContext)
         {
-            EntityView entityView;
+            BreadcrumbModel entityView;
 
             using (CommandActivity.Start(commerceContext, this))
             {

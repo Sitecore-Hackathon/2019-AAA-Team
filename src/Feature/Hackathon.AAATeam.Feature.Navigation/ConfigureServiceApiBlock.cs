@@ -1,11 +1,10 @@
 ﻿namespace Hackathon.AAATeam.Feature.Navigation
 {
     using System.Threading.Tasks;
-
+    using Hackathon.AAATeam.Feature.Navigation.Models;
     using Microsoft.AspNetCore.OData.Builder;
 
     using Sitecore.Commerce.Core;
-    using Sitecore.Commerce.EntityViews;
     using Sitecore.Framework.Conditions;
     using Sitecore.Framework.Pipelines;
 
@@ -18,11 +17,11 @@
 
             var getBreadcrumbByItemId = modelBuilder.Function("GetBreadcrumbByItemId");
             getBreadcrumbByItemId.Parameter<string>("itemId");
-            getBreadcrumbByItemId.Returns<EntityView>();
+            getBreadcrumbByItemId.Returns<BreadcrumbModel>();
 
             var getChildrenByItemId = modelBuilder.Function("GetChildrenByItemId");
             getChildrenByItemId.Parameter<string>("itemId");
-            getChildrenByItemId.Returns<EntityView>();
+            getChildrenByItemId.Returns<BreadcrumbModel>();
             
             return Task.FromResult(modelBuilder);
         }

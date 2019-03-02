@@ -57,7 +57,7 @@
                 return new BadRequestObjectResult(ModelState);
             }
 
-            var process = Command<BizFxBreadcrumbCommand>()?.Process(itemId, CurrentContext);
+            var process = Command<BizFxBreadcrumbItemCommand>()?.Process(itemId, CurrentContext);
 
             if (process == null)
             {
