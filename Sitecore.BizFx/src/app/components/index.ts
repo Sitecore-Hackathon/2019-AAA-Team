@@ -10,6 +10,7 @@ export * from './actions/sc-bizfx-actionproperty.component';
 export * from './actions/sc-bizfx-autocomplete.component';
 export * from './actions/sc-bizfx-braintree.component';
 export * from './actions/sc-bizfx-mediapicker.component';
+export * from './actions/sc-bizfx-breadcrumb-new.component';
 
 export * from './views/sc-bizfx-view.component';
 export * from './views/sc-bizfx-flatview.component';

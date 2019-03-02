@@ -52,7 +52,8 @@ import {
   ScBizFxAutocompleteComponent,
   ScBizFxBraintreeComponent,
   ScBizFxMediaPickerComponent,
-  ScBizFxViewComponent
+  ScBizFxViewComponent,
+  ScBizFxBreadcrumbNewComponent
 } from './components';
 
 /**
@@ -137,7 +138,7 @@ registerLocaleData(localeJa, 'Ja-JP', localeJaExtra);
     ScBizFxBraintreeComponent,
     ScBizFxMediaPickerComponent,
     ScBizFxViewComponent,
-
+    ScBizFxBreadcrumbNewComponent,
     DecimalPipe,
     CurrencyPipe,
     DatePipe
