@@ -1,205 +1,111 @@
-﻿using Hackathon.AAATeam.Feature.Navigation.Policies;
+﻿using Hackathon.AAATeam.Feature.Navigation.Entities;
 using Sitecore.Commerce.Core;
-using Sitecore.Commerce.EntityViews;
-using Sitecore.Commerce.Plugin.Shops;
+using Sitecore.Commerce.Plugin.Catalog;
 using Sitecore.Framework.Pipelines;
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hackathon.AAATeam.Feature.Navigation.Models;
 
 namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
 {
     [PipelineDisplayName("AAATeam.Navigation.block.GetBreadcrumbItemView")]
-    public class GetBreadcrumbItemViewBlock : PipelineBlock<string, EntityView, CommercePipelineExecutionContext>
+    public class GetBreadcrumbItemViewBlock : PipelineBlock<string, List<BreadcrumbModel>, CommercePipelineExecutionContext>
     {
         private readonly IFindEntityPipeline _findEntityPipeline;
         private readonly IFindEntitiesInListPipeline _findEntitiesInListPipeline;
+        private readonly IFindEntityVersionsPipeline _findEntityVersionsPipeline;
 
-        public GetBreadcrumbItemViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntitiesInListPipeline findEntitiesInListPipeline)
+        public GetBreadcrumbItemViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntitiesInListPipeline findEntitiesInListPipeline, IFindEntityVersionsPipeline findEntityVersionsPipeline)
         {
             _findEntityPipeline = findEntityPipeline;
             _findEntitiesInListPipeline = findEntitiesInListPipeline;
+            _findEntityVersionsPipeline = findEntityVersionsPipeline;
         }
 
-        public override Task<EntityView> Run(string arg, CommercePipelineExecutionContext context)
+        public override async Task<List<BreadcrumbModel>> Run(string arg, CommercePipelineExecutionContext context)
         {
+            var result = new List<BreadcrumbModel>();
 
-            //var currentItem = 
-
-            var entityView = new EntityView
+            if (string.IsNullOrWhiteSpace(arg))
             {
-                EntityId = string.Empty,
-                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
-                Action = string.Empty,
-                ItemId = string.Empty,
-                UiHint = "List"
-            };
+                return result;
+            }
 
-            context.CommerceContext.AddObject(new EntityViewArgument
+            var currentItem =
+                await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), arg, false), context)
+                    .ConfigureAwait(false) as CatalogItemBase;
+
+            if (currentItem == null)
             {
-                ViewName = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb
-            });
+                return result;
+            }
 
-            Shop shop = context.CommerceContext.GetObjects<Shop>()
-                .FirstOrDefault(s => s.Name.Equals(context.CommerceContext.CurrentShopName(), StringComparison.OrdinalIgnoreCase))
-                ?? context.CommerceContext.GetEntities<Shop>()
-                .FirstOrDefault(s => s.Name.Equals(context.CommerceContext.CurrentShopName(), StringComparison.OrdinalIgnoreCase));
+            var children = await GetChildren(currentItem, context).ConfigureAwait(false);
 
-            var level1 = new EntityView
+            foreach (var itm in children)
             {
-                EntityId = string.Empty,
-                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
-                Action = string.Empty,
-                ItemId = string.Empty,
-                UiHint = "List"
-            };
-
-            var viewPropertyArray = new[]
-            {
-                new ViewProperty
+                var version = 1;
+                var commerceEntities =
+                    await _findEntityVersionsPipeline.Run(new FindEntityArgument(itm.GetType(), itm.Id, false),
+                        context);
+                if (commerceEntities != null)
                 {
-                    Name = "Name",
-                    RawValue = "Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true,
-                    UiType = "EntityLink"
-                },
-                new ViewProperty
-                {
-                    Name = "DisplayName",
-                    RawValue = "Habitat_Master",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "IsActive",
-                    RawValue =true,
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Icon",
-                    RawValue = "child.img",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Href",
-                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Id",
-                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true
+                    var itemVersion = commerceEntities.LastOrDefault();
+                    version = itemVersion?.Version ?? 1;
                 }
-            };
-            level1.Properties.AddRange(viewPropertyArray);
-            entityView.ChildViews.Add(level1);
 
-            var level2 = new EntityView
-            {
-                EntityId = string.Empty,
-                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
-                Action = string.Empty,
-                ItemId = string.Empty,
-                UiHint = "List"
-            };
+                result.Add(itm.ToBreadcrumbModel(version));
+            }
 
-            level1.Properties.AddRange(new[]
+            return result;
+        }
+
+        private async Task<List<CatalogItemBase>> GetChildren(CatalogItemBase item, CommercePipelineExecutionContext context)
+        {
+            var result = new List<CatalogItemBase>();
+            if (item == null || !item.HasComponent<ExtendedCatalogItemComponent>())
             {
-                new ViewProperty
+                return result;
+            }
+
+            var component = item.GetComponent<ExtendedCatalogItemComponent>();
+
+
+            if (item.Id.StartsWith(CommerceEntity.IdPrefix<Catalog>()) || item.Id.StartsWith(CommerceEntity.IdPrefix<Category>()))
+            {
+                if (!string.IsNullOrEmpty(component.ChildrenSellableItemEntitiesList))
                 {
-                    Name = "Name",
-                    RawValue = "Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true,
-                    UiType = "EntityLink"
-                },
-                new ViewProperty
-                {
-                    Name = "DisplayName",
-                    RawValue = "Habitat_Master",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "IsActive",
-                    RawValue =true,
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Icon",
-                    RawValue = "child.img",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Href",
-                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Id",
-                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true
+                    var sellableItems = component.ChildrenSellableItemEntitiesList.Split('|');
+
+                    foreach(var sellableItemId in sellableItems)
+                    {
+                        var existingSellableItem = await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), sellableItemId, false), context).ConfigureAwait(false) as CatalogItemBase;
+
+                        if (existingSellableItem != null)
+                        {
+                            result.Add(existingSellableItem);
+                        }
+                    }
                 }
-            });
-            entityView.ChildViews.Add(level2);
 
-            var level3 = new EntityView
-            {
-                EntityId = string.Empty,
-                Name = context.GetPolicy<KnownExtendedBusinessUsersViewsPolicy>().ToolsBreadcrumb,
-                Action = string.Empty,
-                ItemId = string.Empty,
-                UiHint = "List"
-            };
+                if (!string.IsNullOrEmpty(component.ChildrenCategoryEntitiesList))
+                {
+                    var categories = component.ChildrenCategoryEntitiesList.Split('|');
 
-            level1.Properties.AddRange(new[]
-            {
-                new ViewProperty
-                {
-                    Name = "Name",
-                    RawValue = "Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true,
-                    UiType = "EntityLink"
-                },
-                new ViewProperty
-                {
-                    Name = "DisplayName",
-                    RawValue = "Habitat_Master",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "IsActive",
-                    RawValue =true,
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Icon",
-                    RawValue = "child.img",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Href",
-                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true
-                },
-                new ViewProperty
-                {
-                    Name = "Id",
-                    RawValue = "/entityView/Master/1/Entity-Catalog-Habitat_Master",
-                    IsReadOnly = true
+                    foreach (var categoryItemId in categories)
+                    {
+                        var existingCategoryItem = await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), categoryItemId, false), context).ConfigureAwait(false) as CatalogItemBase;
+
+                        if (existingCategoryItem != null)
+                        {
+                            result.Add(existingCategoryItem);
+                        }
+                    }
                 }
-            });
-            entityView.ChildViews.Add(level3);
+            }
 
-            return Task.FromResult(entityView);
+            return result;
         }
     }
 }
