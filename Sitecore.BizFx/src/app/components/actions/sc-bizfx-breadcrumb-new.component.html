@@ -30,7 +30,7 @@
     <div class="breadCrumbsNavigation__item--children"  *ngIf="checkItemExists(item) && item.active">
       <div *ngFor = "let child of item.children">
         <div class = "breadCrumbsNavigation__item--link">
-            <a href = {{child.Href}}><img *ngIf="child.img" src="{{child.Icon}}"><span>{{child.DisplayName}}</span></a>
+            <a href = {{child.Href}}><img src="{{child.Icon}}"><span>{{child.DisplayName}}</span></a>
         </div>
       </div>
     </div>
