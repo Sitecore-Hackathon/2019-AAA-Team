@@ -26,7 +26,16 @@ Advanced BizFx breadcrumbs component to help navigate in the Merchandising Dashb
 
  Solution contains 2 parts to be deployed: 
 
- ### 1. The Copy of the "BizFx Sitecore Commerce Business Tools SDK" with advanced breadcrumbs component (sc-bizfx-breadcrumbs-new) added and integrated in the ./Sitecore.BizFx folder.
+ ### 1. The Copy of the "BizFx Sitecore Commerce Business Tools SDK" with advanced breadcrumbs component (sc-bizfx-breadcrumbs-new) added and integrated in the `./Sitecore.BizFx` folder.
+
+ The source code for the new breadcrumb BizFx component files could be found under `./Sitecore.BizFx/src/app/components/actions` folder:
+
+[sc-bizfx-breadcrumb-new.component.css](../Sitecore.BizFx/src/app/components/actions/sc-bizfx-breadcrumb-new.component.css)
+
+[sc-bizfx-breadcrumb-new.component.html](../Sitecore.BizFx/src/app/components/actions/sc-bizfx-breadcrumb-new.component.html)
+
+[sc-bizfx-breadcrumb-new.component.ts](../Sitecore.BizFx/src/app/components/actions/sc-bizfx-breadcrumb-new.component.ts)
+
 
  This SDK should be deployed according to the regular Sitecore installation instructions (copy located in the git path: [Sitecore.BizFx/README.md](Sitecore.BizFx/README.md):
 
@@ -70,7 +79,7 @@ Publish Sitecore.Commerce.Engine solution to the CommerceAuthoring web site (C:\
 
 ![Image](images/IMG2.png?raw=true)
 
-After solution publish, please clean by postman habitat environment and then initialize environment (because we need new fields in the catalog items).
+After publish, please clean by postman web request habitat environment and then initialize environment (because we need new fields in the catalog items).
 
 
 ### YouTube link
