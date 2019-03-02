@@ -1,71 +1,79 @@
-# Documentation
+# Sitecore Hackathon AAA Team. 
 
-The documentation for this years Hackathon must be provided as a readme in Markdown format as part of your submission. 
+## Hackathon Category: Enhancement to Sitecore Commerce Business Tools UI. 
 
-You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
+## Module: Advanced breadcrumbs for Merchandising Dashboard.
 
-Examples of things to include are the following.
 
-## Summary
+#### Problem:
+When using merchandising dashboard, the navigation between Catalogs, Categories, Sellable items, Variants is very confusing. The default breadcrumbs component shows links to the ecommerce site root (Commerce) and to the current item, no matter where you have navigated to:
 
-**Category:** Hackathon Category
+![Image](images/IMG1.png?raw=true)
 
-What is the purpose of your module? What problem does it solve and how does it do that?
 
-## Pre-requisites
+#### Purpose of the module:
+Advanced BizFx breadcrumbs component to help navigate in the Merchandising Dashboard. This component will show full hierarchical path to the current item + plus will be links to the over items on each hierarchical level (to switch catalogs, categories etc.). 
 
-Does your module rely on other Sitecore modules or frameworks?
+#### End user: 
+ Can easily navigate between items of the merchandising dashboard and can easily understand where he is located. 
 
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
 
-## Installation
+#### Pre-requisites:
+ Installed Sitecore Ecommerce 9.0.3. 
 
-Provide detailed instructions on how to install the module, and include screenshots where necessary.
 
-1. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-2. ???
-3. Profit
+ ## Installation
 
-## Configuration
+ Solution contains 2 parts to be deployed: 
 
-How do you configure your module once it is installed? Are there items that need to be updated with settings, or maybe config files need to have keys updated?
+ ### 1. The Copy of the "BizFx Sitecore Commerce Business Tools SDK" with advanced breadcrumbs component (sc-bizfx-breadcrumbs-new) added and integrated in the ./Sitecore.BizFx folder.
 
-Remember you are using Markdown, you can provide code samples too:
+ This SDK should be deployed according to the regular Sitecore installation instructions (copy located in the git path: [Sitecore.BizFx/README.md](Sitecore.BizFx/README.md):
 
-```xml
-<?xml version="1.0"?>
-<!--
-  Purpose: Configuration settings for my hackathon module
--->
-<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
-  <sitecore>
-    <settings>
-      <setting name="MyModule.Setting" value="Hackathon" />
-    </settings>
-  </sitecore>
-</configuration>
+ Before start developing make sure you have the Sitecore feed in your user's npm config.
+
+Go to `C:\Users\[your user]\.npmrc` and add the following lines to the file:
+
+`@speak:registry=https://sitecore.myget.org/F/sc-npm-packages/npm/`
+`@sitecore:registry=https://sitecore.myget.org/F/sc-npm-packages/npm/`
+
+If the file doesn't exists, run
+
+```npm
+npm config set @speak:registry=https://sitecore.myget.org/F/sc-npm-packages/npm/
+npm config set @sitecore:registry=https://sitecore.myget.org/F/sc-npm-packages/npm/
 ```
 
-## Usage
+Install the SPEAK and BizFx packages, run
 
-Provide documentation  about your module, how do the users use your module, where are things located, what do icons mean, are there any secret shortcuts etc.
+**You can find the SPEAK tarball files at the root of the Sitecore.Commerce.[version].zip file.**
 
-Please include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
+**When installing the `@sitecore/bizfx` package, make sure you are installing the version that shipped with `Sitecore Experience Commerce` that you are using.**
 
-![Hackathon Logo](images/hackathon.png?raw=true "Hackathon Logo")
+```npm
+npm install speak-ng-bcl-0.8.0.tgz
+npm install speak-styling-0.9.0-r00078.tgz
+npm install @sitecore/bizfx
+```
 
-You can embed images of different formats too:
+Run `npm install`
 
-![Deal With It](images/deal-with-it.gif?raw=true "Deal With It")
+#### Build
 
-And you can embed external images too:
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-![Random](https://placeimg.com/480/240/any "Random")
+#### Copy files from `/Sitecore.BizFx/dist/` to your SitecoreBizFx web site (C:\inetpub\wwwroot\SitecoreBizFx for example).
 
-## Video
+### 2. Visual Studio Helix based solution [Hackathon.AAATeam.sln](Hackathon.AAATeam.sln).
 
-Please provide a video highlighing your Hackathon module submission and provide a link to the video. Either a [direct link](https://www.youtube.com/watch?v=EpNhxW4pNKk) to the video, upload it to this documentation folder or maybe upload it to Youtube...
+Publish Sitecore.Commerce.Engine solution to the CommerceAuthoring web site (C:\inetpub\wwwroot\CommerceAuthoring for example).
 
-[![Sitecore Hackathon Video Embedding Alt Text](https://img.youtube.com/vi/EpNhxW4pNKk/0.jpg)](https://www.youtube.com/watch?v=EpNhxW4pNKk)
+![Image](images/IMG2.png?raw=true)
+
+After solution publish, please clean by postman habitat environment and then initialize environment (because we need new fields in the catalog items).
+
+
+### YouTube link
+
+[video](https://www.youtube.com/watch?v=OUitKiIPuz4)
+
