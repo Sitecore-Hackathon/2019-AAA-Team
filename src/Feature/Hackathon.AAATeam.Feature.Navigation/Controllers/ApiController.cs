@@ -21,6 +21,11 @@
                 return new BadRequestObjectResult(ModelState);
             }
 
+            if (string.IsNullOrEmpty(itemId))
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+
             var process = Command<BizFxBreadcrumbCommand>()?.Process(itemId, CurrentContext);
 
             if (process == null)
@@ -43,6 +48,11 @@
         public async Task<IActionResult> GetChildrenByItemId(string itemId)
         {
             if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+
+            if (string.IsNullOrEmpty(itemId))
             {
                 return new BadRequestObjectResult(ModelState);
             }

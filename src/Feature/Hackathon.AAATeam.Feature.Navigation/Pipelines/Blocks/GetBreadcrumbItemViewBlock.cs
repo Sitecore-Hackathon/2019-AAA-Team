@@ -9,11 +9,23 @@ using System.Threading.Tasks;
 
 namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
 {
-    [PipelineDisplayName("AAATeam.Navigation.block.GetBreadcrumbView")]
-    public class GetBreadcrumbViewBlock : PipelineBlock<string, EntityView, CommercePipelineExecutionContext>
+    [PipelineDisplayName("AAATeam.Navigation.block.GetBreadcrumbItemView")]
+    public class GetBreadcrumbItemViewBlock : PipelineBlock<string, EntityView, CommercePipelineExecutionContext>
     {
+        private readonly IFindEntityPipeline _findEntityPipeline;
+        private readonly IFindEntitiesInListPipeline _findEntitiesInListPipeline;
+
+        public GetBreadcrumbItemViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntitiesInListPipeline findEntitiesInListPipeline)
+        {
+            _findEntityPipeline = findEntityPipeline;
+            _findEntitiesInListPipeline = findEntitiesInListPipeline;
+        }
+
         public override Task<EntityView> Run(string arg, CommercePipelineExecutionContext context)
         {
+
+            //var currentItem = 
+
             var entityView = new EntityView
             {
                 EntityId = string.Empty,

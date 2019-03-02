@@ -16,6 +16,7 @@
       <Version>2.4.37</Version>
     </PackageReference>
     <PackageReference Include="Sitecore.Commerce.Plugin.BusinessUsers" Version="2.4.37" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="2.4.21" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +40,6 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Entities\" />
     <Folder Include="Models\" />
     <Folder Include="Pipelines\Arguments\" />
   </ItemGroup>

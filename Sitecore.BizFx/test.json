@@ -1,0 +1,194 @@
+{
+    "@odata.context": "https://localhost:5000/Api/$metadata#Sitecore.Commerce.EntityViews.EntityView",
+    "@odata.type": "#Sitecore.Commerce.EntityViews.EntityView",
+    "Name": "ToolsLanguages",
+    "Policies": [],
+    "DisplayName": "Tools Languages",
+    "EntityId": "",
+    "EntityVersion": 1,
+    "Action": "",
+    "ItemId": "",
+    "VersionedItemId": "-1",
+    "Properties": [],
+    "ChildViews": [
+        {
+            "@odata.type": "#Sitecore.Commerce.EntityViews.EntityView",
+            "Name": "Summary",
+            "Policies": [],
+            "DisplayName": "Details",
+            "EntityId": "",
+            "EntityVersion": 1,
+            "Action": "",
+            "ItemId": "en",
+            "VersionedItemId": "en-1",
+            "Properties": [
+                {
+                    "Name": "Name",
+                    "Policies": [],
+                    "DisplayName": "Name",
+                    "Value": "en",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                },
+                {
+                    "Name": "DisplayName",
+                    "Policies": [],
+                    "DisplayName": "Display Name",
+                    "Value": "English: English",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                }
+            ],
+            "ChildViews": [],
+            "SelectedChildView": {
+                "Name": "",
+                "Policies": []
+            },
+            "DisplayRank": 500,
+            "UiHint": "Flat",
+            "Icon": "chart_column_stacked"
+        },
+        {
+            "@odata.type": "#Sitecore.Commerce.EntityViews.EntityView",
+            "Name": "Summary",
+            "Policies": [],
+            "DisplayName": "Details",
+            "EntityId": "",
+            "EntityVersion": 1,
+            "Action": "",
+            "ItemId": "de-DE",
+            "VersionedItemId": "de-DE-1",
+            "Properties": [
+                {
+                    "Name": "Name",
+                    "Policies": [],
+                    "DisplayName": "Name",
+                    "Value": "de-DE",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                },
+                {
+                    "Name": "DisplayName",
+                    "Policies": [],
+                    "DisplayName": "Display Name",
+                    "Value": "German (Germany): Deutsch (Deutschland)",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                }
+            ],
+            "ChildViews": [],
+            "SelectedChildView": {
+                "Name": "",
+                "Policies": []
+            },
+            "DisplayRank": 500,
+            "UiHint": "Flat",
+            "Icon": "chart_column_stacked"
+        },
+        {
+            "@odata.type": "#Sitecore.Commerce.EntityViews.EntityView",
+            "Name": "Summary",
+            "Policies": [],
+            "DisplayName": "Details",
+            "EntityId": "",
+            "EntityVersion": 1,
+            "Action": "",
+            "ItemId": "ja-JP",
+            "VersionedItemId": "ja-JP-1",
+            "Properties": [
+                {
+                    "Name": "Name",
+                    "Policies": [],
+                    "DisplayName": "Name",
+                    "Value": "ja-JP",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                },
+                {
+                    "Name": "DisplayName",
+                    "Policies": [],
+                    "DisplayName": "Display Name",
+                    "Value": "Japanese (Japan): \u65e5\u672c\u8a9e (\u65e5\u672c)",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                }
+            ],
+            "ChildViews": [],
+            "SelectedChildView": {
+                "Name": "",
+                "Policies": []
+            },
+            "DisplayRank": 500,
+            "UiHint": "Flat",
+            "Icon": "chart_column_stacked"
+        },
+        {
+            "@odata.type": "#Sitecore.Commerce.EntityViews.EntityView",
+            "Name": "Summary",
+            "Policies": [],
+            "DisplayName": "Details",
+            "EntityId": "",
+            "EntityVersion": 1,
+            "Action": "",
+            "ItemId": "fr-FR",
+            "VersionedItemId": "fr-FR-1",
+            "Properties": [
+                {
+                    "Name": "Name",
+                    "Policies": [],
+                    "DisplayName": "Name",
+                    "Value": "fr-FR",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                },
+                {
+                    "Name": "DisplayName",
+                    "Policies": [],
+                    "DisplayName": "Display Name",
+                    "Value": "French (France): fran\u00e7ais (France)",
+                    "IsHidden": false,
+                    "OriginalType": "System.String",
+                    "IsReadOnly": true,
+                    "UiType": "",
+                    "IsRequired": true
+                }
+            ],
+            "ChildViews": [],
+            "SelectedChildView": {
+                "Name": "",
+                "Policies": []
+            },
+            "DisplayRank": 500,
+            "UiHint": "Flat",
+            "Icon": "chart_column_stacked"
+        }
+    ],
+    "SelectedChildView": {
+        "Name": "",
+        "Policies": []
+    },
+    "DisplayRank": 500,
+    "UiHint": "List",
+    "Icon": "chart_column_stacked"
+}

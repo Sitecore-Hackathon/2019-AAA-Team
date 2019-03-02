@@ -58,7 +58,7 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
   }
   
   @Input() view: ScBizFxView;
-  private apiUrl = 'api/breadcrumbs';
+  private apiUrl = 'api/GetBreadcrumb';
   
   onClick(event) {
     if (!this._eref.nativeElement.contains(event.target)){ // or some similar check
@@ -71,29 +71,36 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     if (window.location.href.indexOf('entityView') < 0) { this.display = false; }
     const url = this.apiUrl;
-    debugger
     this.breadCrumbs = [
       {
-        title: 'test',
-        url: 'est',
+        Name: 'Entity-Catalog-Habitat_Master',
+        DisplayName: 'Habitat_Master',
+        Href: '/entityView/Master/1/Entity-Catalog-Habitat_Master',
+        IsActive: true,
+        Icon: 'child.img',
         id: '123'
       },
       {
-        title: 'test',
-        url: 'est',
-        id: '234'
+        Name: 'Entity-Catalog-Habitat_Master',
+        DisplayName: 'Departments',
+        Href: '/entityView/Master/1/Entity-Category-Habitat_Master-Departments',
+        IsActive: false,
+        Icon: 'child.img',
+        id: '123'
       },
       {
-        title: 'test',
-        url: 'est',
-        id: '345'
+        Name: 'Entity-Catalog-Habitat_Master',
+        DisplayName: 'test',
+        Href: '/entityView/Master/1/Entity-Catalog-Habitat_Master',
+        IsActive: false,
+        Icon: 'child.img',
+        id: '123'
       }
     ]
     this.http.get(url)
     .subscribe(
       response => {
         console.log('API answer: ', response);
-     
       },
       err => {
         console.log('Server error: ' + JSON.stringify(err));
@@ -112,7 +119,7 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
 
     if(!itemId.children) {
       new Promise ((resolve, reject) => {
-        const url = this.apiUrl;
+        const url = 'api/GetChildrenByItemId';//this.apiUrl;
         
         this.http.get(url + '?' + itemId.id)
         .subscribe(
