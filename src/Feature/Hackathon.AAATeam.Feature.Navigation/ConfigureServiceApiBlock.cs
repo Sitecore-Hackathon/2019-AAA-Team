@@ -17,11 +17,11 @@
 
             var getBreadcrumbByItemId = modelBuilder.Function("GetBreadcrumbByItemId");
             getBreadcrumbByItemId.Parameter<string>("itemId");
-            getBreadcrumbByItemId.Returns<BreadcrumbModel>();
+            getBreadcrumbByItemId.Returns<BreadcrumItemsModel>();
 
             var getChildrenByItemId = modelBuilder.Function("GetChildrenByItemId");
             getChildrenByItemId.Parameter<string>("itemId");
-            getChildrenByItemId.Returns<BreadcrumbModel>();
+            getChildrenByItemId.Returns<BreadcrumItemsModel>();
             
             return Task.FromResult(modelBuilder);
         }

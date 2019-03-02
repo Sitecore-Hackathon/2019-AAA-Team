@@ -40,7 +40,7 @@
                 return NotFound();
             }
 
-            return new ObjectResult(new BreadcrumsItems(result));
+            return new ObjectResult(new BreadcrumItemsModel(result));
         }
 
         [HttpGet]
@@ -71,7 +71,7 @@
                 return NotFound();
             }
 
-            return new ObjectResult(new BreadcrumsItems(result));
+            return new ObjectResult(new BreadcrumItemsModel(result));
         }
     }
 }

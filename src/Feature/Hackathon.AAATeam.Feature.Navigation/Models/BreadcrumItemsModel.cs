@@ -2,15 +2,15 @@
 
 namespace Hackathon.AAATeam.Feature.Navigation.Models
 {
-    public class BreadcrumsItems : Sitecore.Commerce.Core.Model
+    public class BreadcrumItemsModel : Sitecore.Commerce.Core.Model
     {
         public List<BreadcrumbModel> Items { get; set; }
-        public BreadcrumsItems()
+        public BreadcrumItemsModel()
         {
             Items = new List<BreadcrumbModel>();
         }
 
-        public BreadcrumsItems(List<BreadcrumbModel> items)
+        public BreadcrumItemsModel(List<BreadcrumbModel> items)
         {
             Items = items;
         }
