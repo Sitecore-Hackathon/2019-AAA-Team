@@ -1,0 +1,64 @@
+.breadCrumbsNavigation {
+    display: flex;
+    margin: 0 -5px;
+    padding: 1.25rem;
+    width: 100%;
+
+}
+
+.breadCrumbsNavigation__item {
+    margin: 0 5px;
+}
+
+.breadCrumbsNavigation__item--link a,
+.breadCrumbsNavigation__item--link span {
+    font-family: 'Open Sans', "Helvetica Neue", Arial, sans-serif !important;
+    color: #f9d8d7;
+    font-size: 14px;
+}
+
+.breadCrumbsNavigation__item > .breadCrumbsNavigation__item--link > span {
+    cursor: pointer;
+    border-bottom: 1px solid #f9d8d7;
+    border-left: 1px solid #f9d8d7;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    transform: rotate(-135deg);
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+}
+.breadCrumbsNavigation__item:last-child .breadCrumbsNavigation__item--link span {
+    display: none!important;
+}
+.breadCrumbsNavigation__item--children {
+    background: white;
+    color: #2b2b2b;
+    padding: 10px 0;
+    border-radius: 3px;
+    min-width: 100px;
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.breadCrumbsNavigation__item--children a span {
+    color: #5e5e5e;   
+}
+.breadCrumbsNavigation__item--children .breadCrumbsNavigation__item--link a {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.breadCrumbsNavigation__item--children .breadCrumbsNavigation__item--link a:hover {
+    background: rgba(71, 71, 71, 0.1);
+}
+.breadCrumbsNavigation__item--children .breadCrumbsNavigation__item--link a img {
+    width: 25px;
+
+}
+.breadCrumbsNavigation__item--children .breadCrumbsNavigation__item--link a > * {
+    padding: 0 5px;
+}

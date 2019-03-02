@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "ng": ".\\node_modules\\.bin\\ng",
-    "start": ".\\node_modules\\.bin\\ng serve --open",
+    "start": ".\\node_modules\\.bin\\ng serve --open --ssl",
     "build": "npm run lint && .\\node_modules\\.bin\\ng build --dev",
     "test": ".\\node_modules\\.bin\\ng test",
     "lint": ".\\node_modules\\.bin\\ng lint ",
