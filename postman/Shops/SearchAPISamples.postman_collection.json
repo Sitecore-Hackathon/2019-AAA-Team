@@ -1,0 +1,1282 @@
+{
+	"id": "124d9773-66d6-4d9b-b22f-4707bed4f886",
+	"name": "SearchAPISamples",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": null,
+	"order": [],
+	"folders_order": [
+		"d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+		"926681fd-0bee-4fec-8b56-99c87f9d939b",
+		"578258e7-35f7-4cf4-9b6d-2660d30ee460"
+	],
+	"folders": [
+		{
+			"id": "578258e7-35f7-4cf4-9b6d-2660d30ee460",
+			"name": "API",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "124d9773-66d6-4d9b-b22f-4707bed4f886",
+			"folder": null,
+			"order": [
+				"27aa2421-592b-4858-8611-1786cabc8dd4"
+			],
+			"folders_order": []
+		},
+		{
+			"id": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"name": "Actions",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "124d9773-66d6-4d9b-b22f-4707bed4f886",
+			"folder": null,
+			"order": [
+				"9af5f223-67f0-4eab-8fe2-51be9511bfce",
+				"0e553d66-4059-405d-add5-ab1e9d0e08cf",
+				"bdb29472-2dae-4e6b-be5a-7b1c41d2d049",
+				"8c751e19-9fcd-446a-853e-1fdd27780f14",
+				"f4d05a3d-8808-4fd3-a401-9fdf752e69a0",
+				"cfc0b738-ab37-4da7-afea-da3b7f31019f",
+				"d0aca370-0ad6-41c3-ba52-ddf45cbf8b45",
+				"85a102ed-ab41-4e39-a1a2-fabc603e9529"
+			],
+			"folders_order": []
+		},
+		{
+			"id": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"name": "Views",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "124d9773-66d6-4d9b-b22f-4707bed4f886",
+			"folder": null,
+			"order": [
+				"962349ed-17f9-40c7-8845-68eb434fd19b",
+				"8c0196bc-30b1-42a7-8a7f-83483855d145",
+				"173abac4-8867-454e-aba9-a651f9ce3e11",
+				"8f71cb25-8758-4a84-ab83-303e3ba9e269",
+				"5b2a5f92-73f4-464d-938c-495077374354",
+				"39a03ced-3b09-49ff-bba3-f39034a96c97",
+				"8f839063-66f5-4e5d-863c-6e003dbb2560",
+				"e52f6fd9-4ce1-401f-8b94-2356a787283e"
+			],
+			"folders_order": []
+		}
+	],
+	"requests": [
+		{
+			"id": "0e553d66-4059-405d-add5-ab1e9d0e08cf",
+			"name": "Search - Orders Advanced",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n  \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n  \"Name\": \"Search\",\n  \"Policies\": [\n    {\n      \"@odata.type\": \"#Sitecore.Commerce.Plugin.Search.SearchScopePolicy\",\n      \"PolicyId\": \"af3982f3e3024f59a4d7f1c485407e67\",\n      \"Models\": [],\n      \"FullListName\": \"Orders\",\n      \"EntityTypeNames\": [\"Sitecore.Commerce.Plugin.Orders.Order\"],\n      \"IncrementalListName\": \"OrdersIndex\",\n      \"DeletedListName\": \"DeletedOrdersIndex\",\n      \"Name\": \"OrdersScope\",\n      \"ResultDetailsTags\": [\n        {\n          \"Name\": \"OrdersList\",\n          \"Policies\": [],\n          \"Excluded\": false\n        }\n      ]\n    }\n  ],\n  \"DisplayName\": \"Search\",\n  \"EntityId\": \"\",\n  \"Action\": \"Search\",\n  \"ItemId\": \"\",\n  \"Properties\": [\n    {\n      \"Name\": \"Term\",\n      \"Policies\": [],\n      \"DisplayName\": \"Term\",\n      \"Value\": \"*\",\n      \"IsHidden\": false,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Filter\",\n      \"Policies\": [],\n      \"DisplayName\": \"Filter\",\n      \"Value\": \"status eq 'OnHold'\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"OrderBy\",\n      \"Policies\": [],\n      \"DisplayName\": \"Order By\",\n      \"Value\": \"status asc\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Top\",\n      \"Policies\": [],\n      \"DisplayName\": \"Top\",\n      \"Value\": \"10\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Int32\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Skip\",\n      \"Policies\": [],\n      \"DisplayName\": \"Skip\",\n      \"Value\": \"0\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Int32\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    }\n  ],\n  \"ChildViews\": [],\n  \"DisplayRank\": 100,\n  \"UiHint\": \"Search\",\n  \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "173abac4-8867-454e-aba9-a651f9ce3e11",
+			"name": "Search Index Settings  - Orders",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"\",\n    \"viewName\":\"OrdersScope\",\n    \"forAction\":\"\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "27aa2421-592b-4858-8611-1786cabc8dd4",
+			"name": "Search",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/Search()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"function findBookAdded(model) {",
+							"    var type = '@odata.type';",
+							"    return model[type] === '#Sitecore.Commerce.Plugin.Pricing.PriceBookAdded';",
+							"}",
+							"",
+							"postman.setGlobalVariable(\"BookId\", \"Entity-PriceBook-\" + jsonData.Models.find(findBookAdded).Name);",
+							"postman.setGlobalVariable(\"BookName\", jsonData.Models.find(findBookAdded).Name);"
+						]
+					}
+				}
+			],
+			"folder": "578258e7-35f7-4cf4-9b6d-2660d30ee460",
+			"rawModeData": "{\r\n    \"scope\":\"CustomersScope\",\r\n    \"term\": \"*\",\r\n    \"filter\": \"\",\r\n    \"orderBy\": \"\",\r\n    \"skip\": 0,\r\n    \"top\": 10\r\n} ",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "39a03ced-3b09-49ff-bba3-f39034a96c97",
+			"name": "Get Index - For Create",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"\",\n    \"viewName\":\"Index\",\n    \"forAction\":\"CreateSearchIndex\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "5b2a5f92-73f4-464d-938c-495077374354",
+			"name": "Get Index",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"CustomersScope\",\n    \"viewName\":\"Index\",\n    \"forAction\":\"\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "85a102ed-ab41-4e39-a1a2-fabc603e9529",
+			"name": "Search - Items",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n    \"@odata.context\": \"http://localhost:5000/Api/$metadata#Sitecore.Commerce.EntityViews.EntityView\",\n    \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n    \"Name\": \"SearchMediaItems\",\n    \"Policies\": [],\n    \"DisplayName\": \"SearchMediaItems\",\n    \"EntityId\": \"\",\n    \"Action\": \"SearchMediaItems\",\n    \"ItemId\": \"\",\n    \"Properties\": [\n        {\n            \"Name\": \"Term\",\n            \"Policies\": [],\n            \"DisplayName\": \"Term\",\n            \"Value\": \"backpack*\",\n            \"IsHidden\": false,\n            \"OriginalType\": \"System.String\",\n            \"IsReadOnly\": false,\n            \"UiType\": \"\",\n            \"IsRequired\": true\n        },\n        {\n            \"Name\": \"Page\",\n            \"Policies\": [],\n            \"DisplayName\": \"Page\",\n            \"Value\": \"0\",\n            \"IsHidden\": false,\n            \"OriginalType\": \"System.Int32\",\n            \"IsReadOnly\": false,\n            \"UiType\": \"\",\n            \"IsRequired\": false\n        },\n        {\n            \"Name\": \"PageSize\",\n            \"Policies\": [],\n            \"DisplayName\": \"PageSize\",\n            \"Value\": \"10\",\n            \"IsHidden\": false,\n            \"OriginalType\": \"System.Int32\",\n            \"IsReadOnly\": false,\n            \"UiType\": \"\",\n            \"IsRequired\": false\n        }\n    ],\n    \"ChildViews\": [],\n    \"DisplayRank\": 500,\n    \"UiHint\": \"Flat\",\n    \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "8c0196bc-30b1-42a7-8a7f-83483855d145",
+			"name": "Search - For Customers",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"\",\n    \"viewName\":\"CustomersDashboard\",\n    \"forAction\":\"\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "8c751e19-9fcd-446a-853e-1fdd27780f14",
+			"name": "Search - Customers Advanced",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n  \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n  \"Name\": \"Search\",\n  \"Policies\": [\n    {\n      \"@odata.type\": \"#Sitecore.Commerce.Plugin.Search.SearchScopePolicy\",\n      \"PolicyId\": \"5f7273bd3c3d45b5ab17ac59495c0c45\",\n      \"Models\": [],\n      \"FullListName\": \"Customers\",\n      \"EntityTypeNames\": [\"Sitecore.Commerce.Plugin.Customers.Customer\"],\n      \"IncrementalListName\": \"CustomersIndex\",\n      \"DeletedListName\": \"DeletedCustomersIndex\",\n      \"Name\": \"CustomersScope\",\n      \"ResultDetailsTags\": [\n        {\n          \"Name\": \"CustomersTable\",\n          \"Policies\": [],\n          \"Excluded\": false\n        }\n      ]\n    }\n  ],\n  \"DisplayName\": \"Search\",\n  \"EntityId\": \"\",\n  \"Action\": \"Search\",\n  \"ItemId\": \"\",\n  \"Properties\": [\n    {\n      \"Name\": \"Term\",\n      \"Policies\": [],\n      \"DisplayName\": \"Term\",\n      \"Value\": \"*\",\n      \"IsHidden\": false,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Filter\",\n      \"Policies\": [],\n      \"DisplayName\": \"Filter\",\n      \"Value\": \"firstname eq 'Jane'\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"OrderBy\",\n      \"Policies\": [],\n      \"DisplayName\": \"Order By\",\n      \"Value\": \"\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Top\",\n      \"Policies\": [],\n      \"DisplayName\": \"Top\",\n      \"Value\": \"10\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Int32\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"TopOptions\",\n      \"Policies\": [],\n      \"DisplayName\": \"TopOptions\",\n      \"Value\": \"[\\r\\n  5,\\r\\n  10,\\r\\n  25,\\r\\n  100\\r\\n]\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]\",\n      \"IsReadOnly\": true,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Skip\",\n      \"Policies\": [],\n      \"DisplayName\": \"Skip\",\n      \"Value\": \"0\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Int32\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    }\n  ],\n  \"ChildViews\": [],\n  \"DisplayRank\": 100,\n  \"UiHint\": \"Search\",\n  \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "8f71cb25-8758-4a84-ab83-303e3ba9e269",
+			"name": "Search Index Settings - Customers",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"\",\n    \"viewName\":\"CustomersScope\",\n    \"forAction\":\"\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "8f839063-66f5-4e5d-863c-6e003dbb2560",
+			"name": "List Indexes",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"\",\n    \"viewName\":\"Indexes\",\n    \"forAction\":\"\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "962349ed-17f9-40c7-8845-68eb434fd19b",
+			"name": "Search - For Orders",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"\",\n    \"viewName\":\"OrdersDashboard\",\n    \"forAction\":\"\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "9af5f223-67f0-4eab-8fe2-51be9511bfce",
+			"name": "Search - Orders",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n  \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n  \"Name\": \"Search\",\n  \"Policies\": [\n    {\n      \"@odata.type\": \"#Sitecore.Commerce.Plugin.Search.SearchScopePolicy\",\n      \"PolicyId\": \"a756af6e68e04734939ee7e8f62f76bd\",\n      \"Models\": [],\n      \"FullListName\": \"Orders\",\n      \"EntityTypeNames\": [\"Sitecore.Commerce.Plugin.Orders.Order\"],\n      \"IncrementalListName\": \"OrdersIndex\",\n      \"DeletedListName\": \"DeletedOrdersIndex\",\n      \"Name\": \"OrdersScope\",\n      \"ResultDetailsTags\": [\n        {\n          \"Name\": \"OrdersList\",\n          \"Policies\": [],\n          \"Excluded\": false\n        }\n      ]\n    },\n    {\n      \"@odata.type\": \"#Sitecore.Commerce.EntityViews.ActionsPolicy\",\n      \"PolicyId\": \"37c6475fb2a744d8b07effd93c7de1f0\",\n      \"Models\": [],\n      \"Actions\": [\n        {\n          \"Name\": \"Search\",\n          \"Policies\": [],\n          \"DisplayName\": \"Search\",\n          \"Description\": \"Search\",\n          \"IsEnabled\": true,\n          \"RequiresConfirmation\": false,\n          \"UiHint\": null,\n          \"EntityView\": \"Search\",\n          \"Icon\": \"search\"\n        }\n      ]\n    }\n  ],\n  \"DisplayName\": \"Search\",\n  \"EntityId\": null,\n  \"Action\": \"Search\",\n  \"ItemId\": null,\n  \"Properties\": [\n    {\n      \"Name\": \"Term\",\n      \"Policies\": [],\n      \"DisplayName\": \"Term\",\n      \"Value\": \"*\",\n      \"IsHidden\": false,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": true\n    },\n    {\n      \"Name\": \"Filter\",\n      \"Policies\": [],\n      \"DisplayName\": \"Filter\",\n      \"Value\": \"\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"OrderBy\",\n      \"Policies\": [],\n      \"DisplayName\": \"Order By\",\n      \"Value\": \"\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    }\n  ],\n  \"ChildViews\": [],\n  \"DisplayRank\": 500,\n  \"UiHint\": \"Search\",\n  \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "bdb29472-2dae-4e6b-be5a-7b1c41d2d049",
+			"name": "Search - Customers",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n  \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n  \"Name\": \"Search\",\n  \"Policies\": [\n    {\n      \"@odata.type\": \"#Sitecore.Commerce.Plugin.Search.SearchScopePolicy\",\n      \"PolicyId\": \"5f7273bd3c3d45b5ab17ac59495c0c45\",\n      \"Models\": [],\n      \"FullListName\": \"Customers\",\n      \"EntityTypeNames\": [\"Sitecore.Commerce.Plugin.Customers.Customer\"],\n      \"IncrementalListName\": \"CustomersIndex\",\n      \"DeletedListName\": \"DeletedCustomersIndex\",\n      \"Name\": \"CustomersScope\",\n      \"ResultDetailsTags\": [\n        {\n          \"Name\": \"CustomersTable\",\n          \"Policies\": [],\n          \"Excluded\": false\n        }\n      ]\n    }\n  ],\n  \"DisplayName\": \"Search\",\n  \"EntityId\": \"\",\n  \"Action\": \"Search\",\n  \"ItemId\": \"\",\n  \"Properties\": [\n    {\n      \"Name\": \"Term\",\n      \"Policies\": [],\n      \"DisplayName\": \"Term\",\n      \"Value\": \"*\",\n      \"IsHidden\": false,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Filter\",\n      \"Policies\": [],\n      \"DisplayName\": \"Filter\",\n      \"Value\": \"\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"OrderBy\",\n      \"Policies\": [],\n      \"DisplayName\": \"Order By\",\n      \"Value\": \"\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.String\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Top\",\n      \"Policies\": [],\n      \"DisplayName\": \"Top\",\n      \"Value\": \"10\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Int32\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"TopOptions\",\n      \"Policies\": [],\n      \"DisplayName\": \"TopOptions\",\n      \"Value\": \"[\\r\\n  5,\\r\\n  10,\\r\\n  25,\\r\\n  100\\r\\n]\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]\",\n      \"IsReadOnly\": true,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    },\n    {\n      \"Name\": \"Skip\",\n      \"Policies\": [],\n      \"DisplayName\": \"Skip\",\n      \"Value\": \"0\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Int32\",\n      \"IsReadOnly\": false,\n      \"UiType\": \"\",\n      \"IsRequired\": false\n    }\n  ],\n  \"ChildViews\": [],\n  \"DisplayRank\": 100,\n  \"UiHint\": \"Search\",\n  \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "cfc0b738-ab37-4da7-afea-da3b7f31019f",
+			"name": "Delete Index",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n    \"@odata.context\": \"http://localhost:5000/Api/$metadata#Sitecore.Commerce.EntityViews.EntityView\",\n    \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n    \"Name\": \"Index\",\n    \"Policies\": [],\n    \"DisplayName\": \"Index\",\n    \"EntityId\": \"CustomersScope\",\n    \"Action\": \"DeleteSearchIndex\",\n    \"ItemId\": \"\",\n    \"Properties\": [],\n    \"ChildViews\": [],\n    \"DisplayRank\": 500,\n    \"UiHint\": \"Flat\",\n    \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d0aca370-0ad6-41c3-ba52-ddf45cbf8b45",
+			"name": "Update Index",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n    \"@odata.context\": \"http://localhost:5000/Api/$metadata#Sitecore.Commerce.EntityViews.EntityView\",\n    \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n    \"Name\": \"Index\",\n    \"Policies\": [],\n    \"DisplayName\": \"Index\",\n    \"EntityId\": \"CustomersScope\",\n    \"Action\": \"UpdateSearchIndex\",\n    \"ItemId\": \"\",\n    \"Properties\": [],\n    \"ChildViews\": [],\n    \"DisplayRank\": 500,\n    \"UiHint\": \"Flat\",\n    \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "e52f6fd9-4ce1-401f-8b94-2356a787283e",
+			"name": "Search - Items",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/GetEntityView()",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "d66d1bbc-3cc0-456e-93f6-641362dd28b0",
+			"rawModeData": "{\n    \"entityId\":\"\",\n    \"viewName\":\"SearchMediaItems\",\n    \"forAction\":\"SearchMediaItems\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "f4d05a3d-8808-4fd3-a401-9fdf752e69a0",
+			"name": "Create Index",
+			"url": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopName",
+					"value": "{{ShopName}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ShopperId",
+					"value": "{{ShopperId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Language",
+					"value": "{{Language}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Currency",
+					"value": "{{Currency}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Environment",
+					"value": "{{Environment}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "GeoLocation",
+					"value": "{{GeoLocation}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "CustomerId",
+					"value": "{{CustomerId}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "{{SitecoreIdToken}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": "926681fd-0bee-4fec-8b56-99c87f9d939b",
+			"rawModeData": "{\n    \"@odata.context\": \"http://localhost:5000/Api/$metadata#Sitecore.Commerce.EntityViews.EntityView\",\n    \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n    \"Name\": \"Index\",\n    \"Policies\": [],\n    \"DisplayName\": \"Index\",\n    \"EntityId\": \"\",\n    \"Action\": \"CreateSearchIndex\",\n    \"ItemId\": \"\",\n    \"Properties\": [\n        {\n            \"Name\": \"Name\",\n            \"Policies\": [],\n            \"DisplayName\": \"Name\",\n            \"Value\": \"CustomersScope\",\n            \"IsHidden\": false,\n            \"OriginalType\": \"System.String\",\n            \"IsReadOnly\": false,\n            \"UiType\": \"\",\n            \"IsRequired\": true\n        }\n    ],\n    \"ChildViews\": [],\n    \"DisplayRank\": 500,\n    \"UiHint\": \"Flat\",\n    \"Icon\": \"dashboard\"\n}",
+			"headers": "Content-Type: application/json\nShopName: {{ShopName}}\nShopperId: {{ShopperId}}\nLanguage: {{Language}}\nCurrency: {{Currency}}\nEnvironment: {{Environment}}\nGeoLocation: {{GeoLocation}}\nCustomerId: {{CustomerId}}\nAuthorization: {{SitecoreIdToken}}\n",
+			"pathVariables": {}
+		}
+	]
+}
