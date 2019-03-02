@@ -325,3 +325,5 @@ src/Project/Sitecore.Commerce.Engine/wwwroot/bootstrap
 
 src/Project/Sitecore.Commerce.Engine/wwwroot/config*
 
+src/Project/Sitecore.Commerce.Engine/wwwroot/logs
+
