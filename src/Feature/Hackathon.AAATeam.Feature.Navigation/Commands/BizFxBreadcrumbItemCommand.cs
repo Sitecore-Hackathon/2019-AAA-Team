@@ -6,7 +6,6 @@
     using Hackathon.AAATeam.Feature.Navigation.Pipelines;
     using Sitecore.Commerce.Core;
     using Sitecore.Commerce.Core.Commands;
-    using Sitecore.Commerce.EntityViews;
 
     public class BizFxBreadcrumbItemCommand : CommerceCommand
     {
