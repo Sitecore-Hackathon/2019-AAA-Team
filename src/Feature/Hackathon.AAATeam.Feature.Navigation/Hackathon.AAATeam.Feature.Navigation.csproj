@@ -13,24 +13,15 @@
 
   <ItemGroup>
     <PackageReference Include="Sitecore.Commerce.Core">
-      <Version>2.0.*</Version>
+      <Version>2.4.37</Version>
     </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.Plugin.BusinessUsers" Version="2.4.37" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="ConfigureServiceApiBlock.cs" />
     <Content Include="ConfigureSitecore.cs" />
-    <Content Include="Commands\SampleCommand.cs" />
-    <Content Include="Components\SampleComponent.cs" />
-    <Content Include="Controllers\CommandsController.cs" />
-    <Content Include="Controllers\SampleController.cs" />
-    <Content Include="Entities\SampleEntity.cs" />
-    <Content Include="Models\SampleModel.cs" />
-    <Content Include="Pipelines\Arguments\SampleArgument.cs" />
-    <Content Include="Pipelines\Blocks\SampleBlock.cs" />
-    <Content Include="Pipelines\ISamplePipeline.cs" />
-    <Content Include="Pipelines\SamplePipeline.cs" />
-    <Content Include="Policies\SamplePolicy.cs" />
+    <Content Include="Commands\BizFxBreadcrumbCommand.cs" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -44,5 +35,12 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
     <Reference Include="System.Transactions" />
     <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Models\" />
+    <Folder Include="Pipelines\Arguments\" />
   </ItemGroup>
 </Project>

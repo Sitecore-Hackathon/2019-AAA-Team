@@ -1,28 +1,16 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConfigureSitecore.cs" company="Sitecore Corporation">
-//   Copyright (c) Sitecore Corporation 1999-2017
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Sitecore.Commerce.Plugin.Sample
+﻿namespace Hackathon.AAATeam.Feature.Navigation
 {
     using System.Reflection;
+    using Hackathon.AAATeam.Feature.Navigation.Pipelines;
+    using Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks;
     using Microsoft.Extensions.DependencyInjection;
     using Sitecore.Commerce.Core;
+    using Sitecore.Commerce.EntityViews;
     using Sitecore.Framework.Configuration;
     using Sitecore.Framework.Pipelines.Definitions.Extensions;
 
-    /// <summary>
-    /// The configure sitecore class.
-    /// </summary>
     public class ConfigureSitecore : IConfigureSitecore
     {
-        /// <summary>
-        /// The configure services.
-        /// </summary>
-        /// <param name="services">
-        /// The services.
-        /// </param>
         public void ConfigureServices(IServiceCollection services)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -30,11 +18,12 @@ namespace Sitecore.Commerce.Plugin.Sample
 
             services.Sitecore().Pipelines(config => config
 
-             .AddPipeline<ISamplePipeline, SamplePipeline>(
-                    configure =>
-                        {
-                            configure.Add<SampleBlock>();
-                        })
+            .AddPipeline<IBizFxBreadcrumbPipeline, BizFxBreadcrumbPipeline>(
+                configure =>
+                    {
+                        configure.Add<GetBreadcrumbViewBlock>();
+                        configure.Add<IFormatEntityViewPipeline>();
+                    })
 
                .ConfigurePipeline<IConfigureServiceApiPipeline>(configure => configure.Add<ConfigureServiceApiBlock>()));
 
