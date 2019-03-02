@@ -13,13 +13,11 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
     public class GetBreadcrumbItemViewBlock : PipelineBlock<string, List<BreadcrumbModel>, CommercePipelineExecutionContext>
     {
         private readonly IFindEntityPipeline _findEntityPipeline;
-        private readonly IFindEntitiesInListPipeline _findEntitiesInListPipeline;
         private readonly IFindEntityVersionsPipeline _findEntityVersionsPipeline;
 
-        public GetBreadcrumbItemViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntitiesInListPipeline findEntitiesInListPipeline, IFindEntityVersionsPipeline findEntityVersionsPipeline)
+        public GetBreadcrumbItemViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntityVersionsPipeline findEntityVersionsPipeline)
         {
             _findEntityPipeline = findEntityPipeline;
-            _findEntitiesInListPipeline = findEntitiesInListPipeline;
             _findEntityVersionsPipeline = findEntityVersionsPipeline;
         }
 
