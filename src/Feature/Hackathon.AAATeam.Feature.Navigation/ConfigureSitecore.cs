@@ -44,6 +44,7 @@
                 {
                     configure.Add<ConfigureServiceApiBlock>();
                 })
+            .ConfigurePipeline<IRunningPluginsPipeline>(d => { d.Add<Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks.RegisteredPluginBlock>().After<RunningPluginsBlock>(); }) 
              );
 
             services.RegisterAllCommands(assembly);

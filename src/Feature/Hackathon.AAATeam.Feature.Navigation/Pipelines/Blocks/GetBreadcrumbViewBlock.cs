@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Hackathon.AAATeam.Feature.Navigation.Models;
 using Sitecore.Commerce.Plugin.Catalog;
 using Hackathon.AAATeam.Feature.Navigation.Entities;
+using System;
+using Hackathon.AAATeam.Feature.Navigation.Extensions;
 
 namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
 {
@@ -14,32 +16,51 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
     {
         private readonly IFindEntityPipeline _findEntityPipeline;
         private readonly IFindEntityVersionsPipeline _findEntityVersionsPipeline;
+        private readonly CommerceCommander _commerceCommander;
+        private readonly IGetCatalogsPipeline _getCatalogsPipeline;
 
-        public GetBreadcrumbViewBlock(IFindEntityPipeline findEntityPipeline, IFindEntityVersionsPipeline findEntityVersionsPipeline)
+        public GetBreadcrumbViewBlock(CommerceCommander commerceCommander, IFindEntityPipeline findEntityPipeline, IFindEntityVersionsPipeline findEntityVersionsPipeline, IGetCatalogsPipeline getCatalogsPipeline)
         {
+            _commerceCommander = commerceCommander;
             _findEntityPipeline = findEntityPipeline;
             _findEntityVersionsPipeline = findEntityVersionsPipeline;
+            _getCatalogsPipeline = getCatalogsPipeline;
         }
 
         public override async Task<List<BreadcrumbModel>> Run(string arg, CommercePipelineExecutionContext context)
         {
             var result = new List<BreadcrumbModel>();
-
-            var currentItem =
-                await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), arg, false), context)
-                    .ConfigureAwait(false) as CatalogItemBase;
-
-            if (currentItem == null)
-            {
-                return result;
-            }
-
             var childList = new List<CatalogItemBase>();
 
-            var model = new List<CatalogItemBase>();
-            await GetParents(currentItem, model, context).ConfigureAwait(false);
-            childList.AddRange(model);
-            childList.Add(currentItem);
+            
+            if (arg.StartsWith("Entity-"))
+            {
+                var currentItem =
+                    await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), arg, false), context)
+                        .ConfigureAwait(false) as CatalogItemBase;
+
+                if (currentItem == null)
+                {
+                    result.Add(new BreadcrumbModel() { Href = "/", Icon = "si si-temple", IsActive = false, Name = "COMMERCE", EntityId = "root" });
+                    return result;
+                }
+
+                var model = new List<CatalogItemBase>();
+
+                childList.Add(currentItem);
+                await GetParents(currentItem, model, context).ConfigureAwait(false);
+                childList.AddRange(model);
+
+                if (currentItem != null && currentItem.HasComponent<ExtendedCatalogItemComponent>())
+                {
+                    var component = currentItem.GetComponent<ExtendedCatalogItemComponent>();
+                    var catalog = await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), component.ParentCatalogEntitiesList, false), context) as CatalogItemBase;
+                    childList.Add(catalog);
+                }
+            }
+
+            result.Add(new BreadcrumbModel() { Href = "/", Icon = "si si-temple", IsActive = false, Name = "COMMERCE", EntityId = "root" });
+            childList.Reverse();
 
             foreach (var itm in childList)
             {
@@ -70,12 +91,10 @@ namespace Hackathon.AAATeam.Feature.Navigation.Pipelines.Blocks
 
             if (!string.IsNullOrEmpty(component.ParentCategoryEntitiesList))
             {
-                var existingCategoryItem = await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), component.ParentCategoryEntitiesList, false), context).ConfigureAwait(false) as CatalogItemBase;
+                var existingCategoryItem = await _findEntityPipeline.Run(new FindEntityArgument(typeof(CatalogItemBase), component.ParentCategoryEntitiesList, false), context) as CatalogItemBase;
                 model.Add(existingCategoryItem);
                 await GetParents(existingCategoryItem, model, context).ConfigureAwait(false);
             }
-
-            model.Reverse();
 
             return model;
         }

@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Extensions\" />
     <Folder Include="Pipelines\Arguments\" />
   </ItemGroup>
 
