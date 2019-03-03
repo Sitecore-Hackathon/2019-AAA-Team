@@ -10,11 +10,6 @@ import { ScBizFxAction, ScBizFxView } from '@sitecore/bizfx';
 import { ScBizFxActionComponent } from './sc-bizfx-action.component';
 import { ScBizFxContextService, ScBizFxViewsService } from '@sitecore/bizfx';
 
-/**
- * BizFx View Action Bar `Component`.
- *
- * Reders an action bar for a view.
- */
 @Component({
   selector: 'sc-bizfx-breadcrumb-new',
   templateUrl: './sc-bizfx-breadcrumb-new.component.html',
@@ -25,10 +20,6 @@ import { ScBizFxContextService, ScBizFxViewsService } from '@sitecore/bizfx';
 })
 
 
-
-/**
- * BizFx View Action Bar `Component`.
- */
 export class ScBizFxBreadcrumbNewComponent implements AfterViewInit { 
   sub: any;
   currentRoute: string;
@@ -71,25 +62,22 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
     public currentId = '';
 
   ngOnInit() {
-    /*this.sub = this.route
-    .data
-    .subscribe(v => console.log(v));*/
-    if(true) {return null;}
-  }
+
+  };
+
+  ngAfterViewInit(): void {
+   
+  };
   
   @Input() view: ScBizFxView;
   
   onClick(event) {
-    if (!this._eref.nativeElement.contains(event.target)){ // or some similar check
+    if (!this._eref.nativeElement.contains(event.target)){ 
       this.breadCrumbs.map((item, index) => (
         item.active = false
       ))
     }
   }
-
-  ngAfterViewInit(): void {
-   
-  };
 
     loadItems(): void {     
   
@@ -130,7 +118,6 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
         }
       )
        
-     // if (this.view === undefined) { return; }
       };
 
   loadSubItems(event, itemId): void {    
@@ -192,7 +179,4 @@ export class ScBizFxBreadcrumbNewComponent implements AfterViewInit {
     return typeof(item.children) != "undefined"
   };
 
-}/*
-  /**
-     * Defines the view to be render
-     */
+}
